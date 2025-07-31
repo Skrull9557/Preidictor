@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1xBet Crash Game Assistance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+  @import url('https://fonts.cdnfonts.com/css/gobold');
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .processing {
+            animation: pulse 1.5s infinite;
+            position: relative;
+        }
+        .processing::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: inherit;
+        }
+        body, button {
+            font-family: 'Gobold';
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-[#0d0f2a] to-[#1e0b36] min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-md w-full bg-[#141635] rounded-xl shadow-2xl overflow-hidden border border-[#2a2470]">
+        <!-- Header -->
+        <div class="bg-[#22245f] py-4 px-6">
+            <h1 class="text-2xl font-bold text-white text-center flex items-center justify-center">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500">Crash Game</span>
+                <span class="text-white"> Assistant</span>
+            </h1>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="p-6">
+            <!-- Input Field -->
+            <div class="mb-4">
+                <label for="userId" class="block text-sm font-medium text-gray-300 mb-2">Enter Your User ID</label>
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        id="userId" 
+                        placeholder="e.g., 123456789" 
+                        class="w-full px-4 py-3 bg-[#1e203c] border border-[#2a2470] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                    >
+                    <div class="absolute right-3 top-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Checkboxes -->
+            <div class="space-y-3 mb-6">
+                <div class="flex items-center">
+                    <input 
+                        id="promoUsed" 
+                        type="checkbox" 
+                        class="h-4 w-4 text-emerald-500 focus:ring-emerald-500 border-[#2a2470] rounded bg-[#1e203c]"
+                    >
+                    <label for="promoUsed" class="ml-2 block text-sm text-gray-300">
+                        I have used a promo code
+                    </label>
+                </div>
+                <div class="flex items-center">
+                    <input 
+                        id="depositMade" 
+                        type="checkbox" 
+                        class="h-4 w-4 text-emerald-500 focus:ring-emerald-500 border-[#2a2470] rounded bg-[#1e203c]"
+                    >
+                    <label for="depositMade" class="ml-2 block text-sm text-gray-300">
+                        I have made a deposit
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Start Button -->
+            <button 
+                id="startBtn" 
+                class="w-full py-3 px-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-extrabold rounded-lg shadow-lg transform hover:scale-[1.02] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50 text-lg"
+            >
+                START PREDICTION
+            </button>
+            
+            <!-- Processing Indicator -->
+            <div id="processingIndicator" class="hidden mt-6 p-4 bg-[#1e203c] border border-[#2a2470] rounded-lg">
+                <div class="flex items-center justify-center space-x-3">
+                    <div class="h-4 w-4 rounded-full bg-emerald-500 processing"></div>
+                    <div class="h-4 w-4 rounded-full bg-emerald-500 processing" style="animation-delay: 0.2s"></div>
+                    <div class="h-4 w-4 rounded-full bg-emerald-500 processing" style="animation-delay: 0.4s"></div>
+                    <div class="h-4 w-4 rounded-full bg-emerald-500 processing" style="animation-delay: 0.6s"></div>
+                </div>
+                <p class="mt-3 text-center text-gray-300 text-sm">Processing your request. Please wait...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.getElementById('startBtn').addEventListener('click', function() {
+        const userId = document.getElementById('userId').value;
+        const promoUsed = document.getElementById('promoUsed').checked;
+        const depositMade = document.getElementById('depositMade').checked;
+        
+        // Validate inputs
+        if (!userId) {
+            alert('Please enter your User ID');
+            return;
+        }
+        
+        // Show processing indicator
+        this.disabled = true;
+        document.getElementById('processingIndicator').classList.remove('hidden');
+        
+        // Disable inputs during processing
+        document.getElementById('userId').disabled = true;
+        document.getElementById('promoUsed').disabled = true;
+        document.getElementById('depositMade').disabled = true;
+        
+        // Simulate processing (2 seconds) then redirect
+        setTimeout(() => {
+            document.getElementById('processingIndicator').classList.add('hidden');
+            window.location.href = 'result.html'; // Change to your desired page
+        }, 3000);
+    });
+    </script>
+</body>
+</html>
